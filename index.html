@@ -1,3 +1,4 @@
+<!--Our main page-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,23 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <!--Main title, small introduction-->
   <h1><center>Physics Fun!</center></h1>
   <h4><center>Welcome to the question generator!</center></h4>
+  <!--button to login, call a function-->
   <button id="login" onclick="login()">Log in</button>
+  <!--button to sign up, call a function-->
   <button id="signup" onclick="signup()">Sign up</button>
   <script>
+    /** 
+     Links to login.html file and navigates to another web page 
+    **/
     function login() {
       window.location.href = 'login.html';
     }
+    /** 
+     Links to signup.html file and navigates to another web page 
+    **/
     function signup() {
       window.location.href = 'signup.html';
     }
