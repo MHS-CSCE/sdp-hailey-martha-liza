@@ -1,0 +1,180 @@
+html {
+    text-align: center;
+    font-family: Arial;
+    height: 100%;
+    width: 100%;
+    color: #4747e6;
+  }
+  .title {
+    text-align: center;
+    font-family: Arial;
+    font-size: 50px;
+    color: #4747e6;
+  }
+  .btn [id=login] {
+    margin: 80px 10px;
+    background-color: #4747e6;
+    border: black;
+    color: white;
+    padding: 4px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .btn [id=signup]{
+    background-color: #4747e6;
+    border: black;
+    color: white;
+    padding: 4px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    right: 80px;
+    top: 10px;
+  }
+  /* Learned the button placement style code from: https://www.shecodes.io/athena/4345-position-text-in-top-right-corner-with-css */
+  #login {
+    
+    position: absolute;
+    right: 80px;
+    top: 10px;
+  }
+  
+  #signup {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  
+  #enter {
+    position: absolute;
+    right: 270px;
+    top: 340px;
+    padding: 5px 0px;
+    background-color: #4747e6;
+  }
+  /*need to add id to teacher sign up button*/
+  button[id="signUpButton"]{
+    position: absolute;
+    right: 350px;
+    top: 340px;
+    padding: 5px 5px
+  }
+
+  /*input for teacher login page*/
+  input[type="text"]{
+    position: absolute;
+    margin: 100px -100px; padding:0px;
+    text-align:left;
+    width: 200px;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  input[type="password"]{
+    position: absolute;
+    margin: 150px -100px; padding:0px;
+    text-align:left;
+    width: 200px;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  input[id="passwordRepeat"]{
+    position: absolute;
+    margin: 200px -100px; padding:0px;
+    text-align:left;
+    width: 200px;
+    float: left;
+    margin-bottom: 10px;
+  }
+  label[for="email"] {
+    position: absolute;
+    margin:100px -300px; padding:0px;
+    text-align: right;
+    width: 175px;
+    padding-right: 20px;
+    float: left;
+  }
+  
+  label[for="password"] {
+    position: absolute;
+    margin:150px -300px; padding:0px;
+    text-align: right;
+    width: 175px;
+    padding-right: 20px;
+    float: left;
+  }
+  
+  label[for="passwordRepeat"] {
+    position: absolute;
+    margin: 200px -300px; padding:0px;
+    text-align: right;
+    width: 175px;
+    padding-right: 20px;
+    float: left;
+  }
+  /*buttons for sign up page*/
+  .student {
+    position: absolute;
+    right: 150px;
+    top: 200px;
+    padding: 40px 60px;
+    background-color: #4747e6;
+  }
+  .teacher {
+    position: absolute;
+    right: 400px;
+    top: 200px;
+    padding: 40px 60px;
+    background-color: #4747e6;
+  }
+
+
+  input[id="code"]{
+    position: absolute;
+    margin: 150px -100px; padding:0px;
+    text-align:left;
+    width: 200px;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  /*labels for student login page*/
+  label[for="name"] {
+    margin: 100px 105px; padding:0px;
+    text-align: right;
+    width: 175px;
+    padding-right: 20px;
+    float: left;
+  }
+
+  label[for="code"] {
+    position: absolute;
+    margin:150px -300px; padding:0px;
+    text-align: right;
+    width: 175px;
+    padding-right: 20px;
+  }
+    /*#teacher {
+      position: absolute;
+      right: 400px;
+      top: 200px;
+      padding: 40px 60px;
+    }
+    
+    #student {
+      position: absolute;
+      right: 150px;
+      top: 200px;
+      padding: 40px 60px;
+    
+    
+    input[class="action_btn teacher"] {
+      position: absolute;
+      right: 400px;
+      top: 200px;
+      padding: 40px 60px;
+    }
+    */
+  
