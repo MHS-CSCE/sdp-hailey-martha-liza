@@ -1,33 +1,36 @@
 <DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>replit</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
-      </head>
-      <body>
-          <!--Title of choosing an account type-->
-        <h3><div style="margin-top: 100px"><center>Choose Your Account Type:</center></div></h3>
-        <div class="buttons" id=buttons>
-            <!--button to sign up as a teacher-->
-            <button id="Teacher" class="action_btn teacher" type="submit" value="Teacher" onclick="teacherSignUp()">Teacher</button>
-            <!--button to sign up as a student-->
-            <button id="Student" class="action_btn student" type="submit" value="Student" onclick="studentSignUp()">Student</button>
-            <p id="signUp"></p>
-        </div>
-      </body>
-      
-      <script>
-        /**Redirects to teacher sign up page*/
-        function teacherSignUp(){
-          window.location.href='teacher.html';
-        }
-        /**Redirects to student sign up page*/
-        function studentSignUp(){
-          window.location.href='student.html';
-        }
-        
-      </script>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     
-    </html>
+  </head>
+  
+  <body>
+    
+    <h3><div style="margin-top: 100px"><center>Choose Your Account Type:</center></div></h3>
+    <div class="buttons" id=buttons>
+        <!--button to sign up as a teacher-->
+        <button id="Teacher" class="action_btn teacher" type="submit" value="Teacher" onclick="teacherSignUp()">Teacher</button>
+        <!--button to sign up as a student-->
+        <button id="Student" class="action_btn student" type="submit" value="Student" onclick="studentSignUp()">Student</button>
+        <p id="signUp"></p>
+    </div>
+  </body>
+  
+  <script>
+    /**Redirects to teacher sign up page*/
+    function teacherSignUp(){
+      window.location.href='teacher.html';
+    }
+    /**Redirects to student sign up page*/
+    function studentSignUp(){
+      window.location.href='student.html';
+    }
+    
+  </script>
+
+</html>
