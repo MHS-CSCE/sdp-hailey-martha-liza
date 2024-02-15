@@ -1,53 +1,33 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <style>
-    body {
-      margin: 180px 80px;
-      padding: 0px;
-      text-align: left;
-      margin: center;
-    }
-    label, input {
-      display: block;
-      width: 200px;
-      float: left;
-      margin-bottom: 10px;
-    }
-    label {
-      text-align: right;
-      width: 175px;
-      padding-right: 20px;
-    }
-    br {
-      clear: left;
-    }
-  </style>
+
+  <h1 class="title">Physics Fun!</h1>
+
 </head>
+
 <body>
-  <h1><center>Physics Fun!</center></h1>
-  <!--create a form and take an action from app.js file, send data and get response using post-->
-  <form action="/Enter" method="post">
-    <!--Create input fields for users for email and password-->
+  
+  <script src="script.js"></script>
+  <form name="loginForm">
+    <h3 class="title">Log In</h3>
+    
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email"><br><br>
+    <input type="text" id="email" name="email" placeholder="Enter Email" required><br><br>
+    
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password"><br><br>
+    <input type="password" id="password" name="password" placeholder="Enter Password" required><br><br>
+    
     <input type="submit" value="Enter" id="enter">
-  </form>
-  <style>
-    div {
-      position: absolute;
-      top: 150px;
-      right: 200px;
-      width: 350px;
-      height: 250px;
-      border: 2px solid black;
-    }
-  </style>
+    
+ </form>
+
+  
 </body>
+
 </html>
