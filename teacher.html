@@ -1,87 +1,33 @@
 <DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>replit</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
-      </head>
-      <body>
-        <!--create form, action signup from app.js file that sends data to database, and call function when sumbit button-->
-        <form action="/signup" method="post" onsubmit="return repeatPassword()">
-          <h1><center>Sign Up</center></h1>
-        <!--create input fields for users to enter data, passwordRepeat added for varification-->
-          <label for="email">Email</label>
-          <input id="email" type="text" name="email" placeholder="Enter Email" required>
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password" placeholder="Enter Password"  required>
-          <label for="passwordRepeat">Repeat Password</label>
-          <input id="passwordRepeat" type="password" name="passwordRepeat" placeholder="Repeat Password" required>
-          <input type="submit" value="Sign Up">
-        </form>
-        <script>
-            /** 
-            Varifies the repeated password and entered password;
-            Return false(boolean) if they do not match
-            Return true(boolean) if they do match
-            **/
-          function repeatPassword() {
-            //get id and pass it to new variables for passwords
-            var password = document.getElementById("password").value;
-            var passwordRepeat = document.getElementById("passwordRepeat").value;
-            //set condition if repeated password does not match with entered password
-            if (passwordRepeat !== password) {
-                //notify, send an alert
-              alert("Passwords do not match");
-              return false;
-            }
-              //return true if they match
-            return true;
-          }
-        </script>
-      
-      </body>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
     
-      <script src="script.js"></script>
-    
-    <!--  <style>
-        body {
-            margin:180px 80px; padding:0px;
-            text-align:left;
-            align:center;
-        }
-        label,input {
-         display: block;
-         width: 200px;
-         float: left;
-         margin-bottom: 10px;
-        }
-    
-        label {
-         text-align: right;
-         width: 175px;
-         padding-right: 20px;
-        }
-    
-        br {
-          clear: left;
-        }
-    
-        button {
-          position: absolute;
-          right: 350px;
-          top: 340px;
-          padding: 5px 5px
-        }
-    
-        div {
-          position: absolute;
-          top: 150px;
-          right: 150px;
-          width: 450px;
-          height: 250px;
-          border: 2px solid black;
-        }
-        </style>
-     --> 
-    </html>
+    <form id="tchrSignUpForm">
+      <h1 class="title">Sign Up</h1>
+
+      <label for="email">Email</label>
+      <input id="email" type="text" name="email" placeholder="Enter Email" required>
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Enter Password"  required>
+
+      <label for="passwordRepeat">Repeat Password</label>
+      <input id="passwordRepeat" type="password" name="passwordRepeat" placeholder="Repeat Password" required>
+
+      <input type="submit" value="Sign Up">
+    </form>
+  
+  </body>
+
+  <script src="script.js"></script>
+
+
+</html>
