@@ -1,33 +1,26 @@
 <!--Our main page-->
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>PhysicsFun</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <h1 class="title">Physics Fun!</h1>
+  <p class="text">Welcome to the question generator.</p>
 </head>
+
 <body>
-  <!--Main title, small introduction-->
-  <h1><center>Physics Fun!</center></h1>
-  <h4><center>Welcome to the question generator!</center></h4>
-  <!--button to login, call a function-->
-  <button id="login" onclick="login()">Log in</button>
-  <!--button to sign up, call a function-->
-  <button id="signup" onclick="signup()">Sign up</button>
-  <script>
-    /** 
-     Links to login.html file and navigates to another web page 
-    **/
-    function login() {
-      window.location.href = 'login.html';
-    }
-    /** 
-     Links to signup.html file and navigates to another web page 
-    **/
-    function signup() {
-      window.location.href = 'signup.html';
-    }
-  </script>
+  <script src="script.js"></script>
+  <div class="btn" id="btn">
+    <!--login button-->
+    <button id = "login" class="btn btn1" onclick= "login()" value= "Login">Log in</button>
+    <!--signup button-->
+    <button id = "signup" class="btn btn2" onclick = "signup()" value = "SignUp">Sign up</button>
+  </div>
 </body>
+  
 </html>
+
