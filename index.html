@@ -8,7 +8,7 @@
   <title>PhysicsFun</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 
-  <h1 class="title">Physics Fun!</h1>
+  <h1 class="title1">Physics Fun!</h1>
   <p class="text">Welcome to the question generator.</p>
 </head>
 
@@ -19,6 +19,8 @@
     <button id = "login" class="btn btn1" onclick= "login()" value= "Login">Log in</button>
     <!--signup button-->
     <button id = "signup" class="btn btn2" onclick = "signup()" value = "SignUp">Sign up</button>
+    <!--play button-->
+    <button id = "play" class="btn btn3"onclick="play()" value ="play">Play</button>
   </div>
 </body>
 <script>
@@ -28,8 +30,11 @@
   }
   /**Redirects to signup page when user clicks on the login button.*/
   function signup(){
-    window.location.href='signup.html'
+    window.location.href='teacher.html'
+  }
+  /**Redirects to student page when user clicks on the play button.*/
+  function play(){
+    window.location.href='student.html'
   }
 </script>
 </html>
-
