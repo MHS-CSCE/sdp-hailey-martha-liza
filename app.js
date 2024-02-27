@@ -6,6 +6,7 @@
 //initialize express and sqlite
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
+//const bcrypt = require('bcrypt');
 
 //transfer express to the variable app and create a port
 const app = express();
@@ -22,6 +23,8 @@ const db = new sqlite3.Database('myDatabase.db', (err) => {
   }
 });
 
+
+
 //parsing incoming requests with url
 app.use(express.urlencoded({ extended: true }));
 
@@ -29,9 +32,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
 //handle form submission
-app.post('/signup', (req, res) => {
+app.post('/signup', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  
   //inserting input email and password into myDatabase.db table
   db.run('INSERT INTO users (email, password) VALUES (?, ?)', [email, password], (err) => {
     if (err) {
@@ -42,7 +46,30 @@ app.post('/signup', (req, res) => {
     }
     //notify if input data is in database table, sign up is successfull
     console.log('Data inserted successfully');
-    res.send('Sign up is successful!');
+    res.redirect('/createQuestion.html');
+  });
+});
+
+//basically same logic as for sign up, but adding row to compare from already existing data
+app.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  //retrieve user from the database based on email and password
+  db.get('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, row) => {
+    if (err) {
+      console.error('Error querying database', err.message);
+      return res.send('Error: failed to log in');
+    }
+    
+    //check if the row is not undefined and if the password and email matches
+    if (row && row.password === password && row.email === email) {
+      console.log('Log in successful!', row);
+      return res.redirect('/createQuestion.html');
+    } else {
+      console.error('Invalid email or password');
+      return res.send('Invalid email or password');
+    }
   });
 });
 
