@@ -4,52 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Questions</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <div class="smallBox"><h1>Physics Fun</h1></div>
 </head>
-
 <body>
-  <h1>Physics Fun</h1>
+
   <button type="button">Questions</button>
   <button type="button" onclick="responses()">Responses</button>
-  <form action="/createQuestion" method="post" enctype="multipart/form-data">
-    <label for="questionTitle">Question Title:</label>
-    <input type="text" id="questionTitle" name="questionTitle" placeholder="Untitled Question"><br><br>
-    <label for="questionText">Problem description:</label>
-    <input type="text" id="questionText" name="questionText"><br><br>
-    <label for="image">Upload an image:</label>
-    <input type="file" id="image" name="image"><br><br>
-    <label for="option1">Option 1:</label>
-    <input type="text" id="option1" name="option1"><br><br>
-    <label for="option2">Option 2:</label>
-    <input type="text" id="option2" name="option2"><br><br>
-    <label for="option3">Option 3:</label>
-    <input type="text" id="option3" name="option3"><br><br>
-    <label for="option4">Option 4:</label>
-    <input type="text" id="option4" name="option4"><br><br>
-    <input type="submit" value="Submit">
-  </form>
-  
-  <!-- <form action="/createQuestion" method="post" enctype="multipart/form-data" id="questionForm">
-    <div id="questionsContainer">
-      <div class="questionSet">
-        <label for="questionText">Type problem text:</label>
-        <textarea name="questionTexts[]" required></textarea>
-  
-        <label for="image">Upload your image:</label>
-        <input type="file" name="images[]">
-  
-        <label for="options">Options:</label>
-        <input type="text" name="options[][0]" placeholder="Option 1" required>
-        <input type="text" name="options[][1]" placeholder="Option 2" required>
-        <input type="text" name="options[][2]" placeholder="Option 3" required>
-        <input type="text" name="options[][3]" placeholder="Option 4" required>
-      </div>
-    </div>
-    <button type="button" onclick="addQuestionSet()">Add Question</button>
-
-    <button type="submit">Create questions</button>
-  </form> -->
-
+  <div class="bigBox">
+    <form action="/createQuestion" method="post" enctype="multipart/form-data">
+      <label for="questionTitle">Question Title:</label>
+      <input type="text" id="questionTitle" name="questionTitle" placeholder="Untitled Question"><br><br>
+      <label for="questionText">Problem description:</label>
+      <input type="text" id="questionText" name="questionText"><br><br>
+      <label for="image">Upload an image:</label>
+      <input type="file" id="image" name="image"><br><br>
+      <label for="option1">Option 1:</label>
+      <input type="text" id="option1" name="option1"><br><br>
+      <label for="option2">Option 2:</label>
+      <input type="text" id="option2" name="option2"><br><br>
+      <label for="option3">Option 3:</label>
+      <input type="text" id="option3" name="option3"><br><br>
+      <label for="option4">Option 4:</label>
+      <input type="text" id="option4" name="option4"><br><br>
+      <input type="submit" value="Submit">
+      <button type="button" onclick="addQuestionSet()"></button>
+    </form>
+  </div>
   <script>
     function addQuestionSet() {
       const container = document.getElementById('questionsContainer');
