@@ -231,6 +231,35 @@ app.post("/quizzes/:quizId/questions", async (req, res) => {
   }
 });
 
+//access route for play.html(meant for students)
+app.post("/play", (req, res) => {
+  const { code, name } = req.body;
+
+  //verify the access code against the database
+  db.get(
+    "SELECT * FROM quizzes WHERE accessCode = ?",
+    [code],
+    (err, row) => {
+      if (err) {
+        console.error("Error querying database:", err.message);
+        return res.send("Error: failed to verify access code");
+      }
+
+      //check if the access code exists
+      if (row) {
+        // Access code exists, proceed to the quiz
+        console.log("Access code verified:", row);
+        //redirecting to another webpage to access quetions
+        res.redirect("/viewQuestion.html"); // Replace "/quiz" with the actual URL of the quiz page
+      } else {
+        //if code does not exist in database, send an error
+        console.error("Invalid access code");
+        return res.send("Invalid access code");
+      }
+    }
+  );
+});
+
 //start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
