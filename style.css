@@ -1,9 +1,7 @@
 html {
   background-image: url("backgroundImage.jpg");
   opacity: 0.5;
-  filter: 
-    /* hue-rotate(deg), */
-    saturate(4);
+  filter: saturate(4);
   text-align: center;
   font-family: Arial;
   height: 100%;
@@ -17,30 +15,15 @@ html {
 
   /*--------------------------BOXES WITH TEXT--------------------------*/
 
-/*boxes*/
-
-.smallBox {
-  background: white;
-  position: absolute;
-  width: 500px;
-  height: 80px;
-  top: 20%;
-  left: 42%;
-  border: 3px solid black;
-  margin: -100px 0 0 -100px;
-  text-align: center;
-}
-
 .bigBox {
   background: white; /*background colour*/
   width: 500px; /*width of the box*/
-  height: 300px; /*height of the box*/
+  height: 350px; /*height of the box*/
   position: absolute; /*when the box moves nothing else is affected*/
   top: 35%; /*position from the top (higher percentage further down)*/
   left: 42%; /*position from the left (higher percentage further right)*/
   border: solid 3px black; /*border size and colour*/
   margin: -100px 0 0 -100px; /*makes the box move with the screen size*/
-  
 }
 
   /* ----------------------BUTTONS-----------------------
@@ -49,68 +32,48 @@ html {
   
   Login and signup buttons for ability to create questions*/
 
-  #login {
-    right: 80px;
-    top: 10px;
-    color: white;
-    border: black;
-    padding: 4px 6px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
+  .bigButton {
     background-color: #11115f;
-  }
-  
-  #signup {
-    margin: 10px 10px;
-    background-color: #11115f;
-    border: black;
-    color: white;
-    padding: 4px 6px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-  }
-
-  /*Play button for ablity to answer the question*/
-  #play {
     color: white;
     border: black;
     padding: 20px 60px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    background-color: #11115f;
-  }
-  
-  /*sign up and submit buttons for emails, passwords, and class codes*/
-  #teacherSignup {
-    position: absolute;
-    margin: 250px -70px;
-    color: white;
-    border: black;
-    padding: 4px 6px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    background-color: #11115f;
   }
 
-  #studentSubmit {
-    position: absolute;
-    margin: 200px -70px;
+  .smallButton {
+    background-color: #11115f;
     color: white;
     border: black;
+    width: 75px;
+    height: 40px;
+    margin: 5px 5px;
     padding: 4px 6px;
+    font-size: 16px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    background-color: #11115f;
+  }
+  
+  
+  #play {
+    margin: 100px -100px;
   }
 
   #loginSubmit {
+    margin: 120px -100px;
+  }
+
+  #signupSubmit {
+    margin: 120px -100px;
+  }
+
+  
+  /*sign up and submit buttons for emails, passwords, and class codes*/
+  /* #teacherSignup {
     position: absolute;
-    margin: 150px -70px; /*have to use margin instead of right and top to get it to move with the page*/
+    margin: 200px -50px;
     color: white;
     border: black;
     padding: 4px 6px;
@@ -118,79 +81,97 @@ html {
     display: inline-block;
     font-size: 16px;
     background-color: #11115f;
-  }
+  } */
+
+  /* #studentSubmit {
+    position: absolute;
+    margin: -100px 0 0 -100px;
+    color: white;
+    border: black;
+    padding: 4px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #11115f;
+  } */
+
+  /* #loginSubmit {
+    position: absolute;
+    margin: 150px -50px; 
+    color: white;
+    border: black;
+    padding: 4px 6px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    background-color: #11115f;
+  } */
 
 /* ----------------------SIGNING IN REQUIRMENTS------------------------*/
   /*centers the username and password requirments for login and signup pages*/
   input[type="text"]{
     position: absolute;
-    margin: 100px -100px; padding:0px;
-    text-align:left;
+    margin: 50px -100px; padding:0px;
     width: 200px;
-    float: left;
-    margin-bottom: 10px;
   }
 
   input[type="password"]{
     position: absolute;
-    margin: 150px -100px; padding:0px;
-    text-align:left;
+    margin: 75px -100px; padding:0px;
     width: 200px;
-    float: left;
-    margin-bottom: 10px;
   }
 
   input[id="passwordRepeat"]{
     position: absolute;
-    margin: 200px -100px; padding:0px;
-    text-align:left;
+    margin: 150px -100px; padding:0px;
     width: 200px;
-    float: left;
-    margin-bottom: 10px;
   }
 
   /*Input for student play page*/
   input[type="name"]{
     position: absolute;
     margin: 100px -100px; padding:0px;
-    text-align:left;
     width: 200px;
-    float: left;
-    margin-bottom: 10px;
   }
 
   input[id="code"]{
     position: absolute;
     margin: 150px -100px; padding:0px;
-    text-align:left;
     width: 200px;
-    float: left;
-    margin-bottom: 10px;
+  } 
+
+/* -------------------------------ADDING QUESTIONS-----------------------------*/
+  input[id="questionTitle, image, questionText, option1, option2, option3, option4"]{
+    position: absolute;
+    margin: 20px -100px; padding:0px;
+    width: 200px;
+  }
+  input[id="questionTitle"]{
+    margin: 20px -100px; padding:0px;
   }
 
- 
+  input[id="image"]{
+    position: absolute;
+    margin: -10px -220px; padding:0px;
+    width: 200px;
+  }
 
-/* ----------------------QUESTIONS PAGE------------------------
+  input[id="questionText"]{
+    margin: 25px 20px; padding:0px;
+  }
 
-  USE THIS FOR THE FORMS
+  input[id="option1"]{
+    margin: 0px -100px; padding:0px;
+  }
 
-  https://codedamn.com/news/frontend/center-a-form-with-html-css
-  
-ON QUESTION PAGE: 
-<div class="form-container">
-  <form>
-    <!-- form content -->
-  </form>
-</div>
+  input[id="option2"]{
+    margin: 5px -100px; padding:0px;
+  }
 
-ON THIS PAGE
-.form-container {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-}
+  input[id="option3"]{
+    margin: 10px -100px; padding:0px;
+  }
 
-form {
-  width: 50%;
-}
-*/
+  input[id="option4"]{
+    margin: 15px -100px; padding:0px;
+  }
