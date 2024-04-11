@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -6,27 +6,21 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-
-  <h1 class="title">Physics Fun!</h1>
+  <script src="script.js"></script>
 
 </head>
 
 <body>
   
-  <script src="script.js"></script>
-  <form name="loginForm">
-    <h3 class="title">Log In</h3>
-    
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" placeholder="Enter Email" required><br><br>
-    
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="Enter Password" required><br><br>
-    
-    <button type="submit" id="loginSubmit"  value="submit">Submit</button>
-    
- </form>
+  <div class="bigBox">
+    <h1>Log In </h1>
+    <form action="/login" name="loginForm" method="post">
+      <input type="text" id="email" name="email" placeholder="Enter Email" required>
+      <input type="password" id="password" name="password" placeholder="Enter Password" required>
+      <button type="submit" class="bigButton" id="loginSubmit"  value="submit">Submit</button>
 
+    </form>
+  </div>
 </body>
 
 </html>
