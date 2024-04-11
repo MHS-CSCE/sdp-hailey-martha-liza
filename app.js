@@ -75,7 +75,7 @@ app.post("/login", (req, res) => {
   // const validPassword = await bcrypt.compare(row.password, hashedPassword);
   // console.log(validPassword);
 
-  // Retrieve user from the database based on email and password
+  //retrieve user from the database based on email and password
   db.get(
     "SELECT * FROM users WHERE email = ? AND password = ?",
     [email, password],
@@ -85,7 +85,7 @@ app.post("/login", (req, res) => {
         return res.send("Error: failed to log in");
       }
 
-      // Check if the row is not undefined and if the password and email matches
+      //check if the row is not undefined and if the password and email matches
       if (row && row.password === password && row.email === email) {
         console.log("Log in successful!", row);
         return res.redirect("/createQuestion.html");
@@ -97,89 +97,48 @@ app.post("/login", (req, res) => {
   );
 });
 
-app.post("/createQuestion", (req, res) => {
+app.post("/createQuestion", upload.single('image'), (req, res) => {
   try {
-    const { questionText, option1, option2, option3, option4 } = req.body;
+    const {title, questionText, option1, option2, option3, option4 } = req.body;
 
-    // Generate a random access code
+    //generate a random access code
     const generatedAccessCode = generateAccessCode(); // Implement your access code generation logic
-    
-    // Insert the question into the database
-    db.run(
-      "INSERT INTO questions (title, questionText) VALUES(?, ?)",
-      [titile, questionText],
-      function (err) {
-        if (err) {
-          console.log("Error inserting question", err.message);
-          return res.status(400).send("Error: " + err.message);
-        }
-
-        const questionID = this.lastID;
-
-        // Insert the options into the database
-        db.run(
-          "INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)",
-          [questionID, option1, 1] // Assuming option1 is always correct
-        );
-        db.run(
-          "INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)",
-          [questionID, option2, 0] // Assuming option2 is incorrect
-        );
-        db.run(
-          "INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)",
-          [questionID, option3, 0] // Assuming option3 is incorrect
-        );
-        db.run(
-          "INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)",
-          [questionID, option4, 0] // Assuming option4 is incorrect
-        );
-        db.run(
-          "INSERT INTO quizzes (title, accessCode) VALUES (?, ?)",
-          [title, generatedAccessCode],
-          function (err) {
-            if (err) {
-              console.log("Error creating quiz", err.message);
-              return res.status(400).send("Error: " + err.message);
-            }
-
-            const quizID = this.lastID;
-
-            // Associate the question with the quiz
-            db.run(
-              "UPDATE questions SET quizId = ? WHERE id = ?",
-              [quizID, questionID],
-              function (err) {
-                if (err) {
-                  console.log("Error associating question with quiz", err.message);
-                  return res.status(400).send("Error: " + err.message);
-                }
-
-                // Send response with generated access code
-                return res.send(`Question created successfully! Access code: ${generatedAccessCode}`);
-              }
-            );
-          }
-        );
+    //function to generate a random access code
+    function generateAccessCode() {
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const codeLength = 6;
+      let accessCode = "";
+      for (let i = 0; i < codeLength; i++) {
+        accessCode += characters.charAt(Math.floor(Math.random() * characters.length));
       }
-    );
+      return accessCode;
+    }
+    // Insert the question into the database
+    const questionInsertStmt =  db.prepare("INSERT INTO questions (title, questionText) VALUES (?, ?)");
+    const questionResult =  questionInsertStmt.run(title, questionText);
+    const questionId = questionResult.lastID;
+    const optionsInsertStmt =  db.prepare("INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)");
+    optionsInsertStmt.run(questionId, option1, 1); //assuming option1 is correct
+    optionsInsertStmt.run(questionId, option2, 0); //assuming option2 is incorrect
+    optionsInsertStmt.run(questionId, option3, 0); //assuming option3 is incorrect
+    optionsInsertStmt.run(questionId, option4, 0); //assuming option4 is incorrect
+
+    // Create the quiz and associate it with the question
+    const quizInsertStmt = db.prepare("INSERT INTO quizzes (title, accessCode) VALUES (?, ?)");
+    const quizResult = quizInsertStmt.run(title, generatedAccessCode);
+    const quizId = quizResult.lastID;
+
+    // Associate the question with the quiz
+    db.run("UPDATE questions SET quizId = ? WHERE id = ?", [quizId, questionId]);
+
+    return res.send(`Question created successfully! Access code: ${generatedAccessCode}`);
   } catch (err) {
-    res.status(400).send("Error", err.message);
+    console.error("Error creating question:", err.message);
+    return res.status(500).send("Error creating question");
   }
 });
 
-// Function to generate a random access code
-  function generateAccessCode() {
-    // Implement your access code generation logic here
-    // For example, you can generate a random alphanumeric code
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const codeLength = 6;
-    let accessCode = "";
-    for (let i = 0; i < codeLength; i++) {
-      accessCode += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return accessCode;
-  }
-
+//will not be used in the future
 app.post('/uploads', upload.single('image'), (req, res) => {
   // Retrieve the URL of the uploaded image from req.file.location
   const imageUrl = req.file.location;
@@ -233,32 +192,33 @@ app.post('/uploads', upload.single('image'), (req, res) => {
 //     res.status(500).send('Error adding question');
 //   }
 // });
-app.post('/quizzes', async (req, res) => {
+app.post("/quizzes", async (req, res) => {
   const { title } = req.body;
-  const accessCode = generateAccessCode(); // Implement your access code generation logic
+  const accessCode = generateAccessCode();
 
   try {
-    const stmt = db.prepare('INSERT INTO quizzes(title, accessCode) VALUES (?, ?)');
+    const stmt = db.prepare("INSERT INTO quizzes (title, accessCode) VALUES (?, ?)");
     const result = await stmt.run(title, accessCode);
     stmt.finalize();
     res.json({ id: result.lastID, accessCode });
   } catch (error) {
-    console.error('Error creating quiz:', error);
-    res.status(500).send('Error creating quiz');
+    console.error("Error creating quiz:", error);
+    res.status(500).send("Error creating quiz");
   }
 });
 
-app.post('/quizzes/:quizId/questions', async (req, res) => {
+//add a question to a quiz
+app.post("/quizzes/:quizId/questions", async (req, res) => {
   const { quizId } = req.params;
   const { questionText, options } = req.body;
 
   try {
-    const stmt = db.prepare('INSERT INTO questions (quizId, questionText) VALUES (?, ?)');
+    const stmt = db.prepare("INSERT INTO questions (quizId, questionText) VALUES (?, ?)");
     const result = await stmt.run(quizId, questionText);
     const questionId = result.lastID;
     stmt.finalize();
 
-    const optionsStmt = db.prepare('INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)');
+    const optionsStmt = db.prepare("INSERT INTO options (questionId, optionText, isCorrect) VALUES (?, ?, ?)");
     options.forEach(async (option) => {
       await optionsStmt.run(questionId, option.text, option.isCorrect ? 1 : 0);
     });
@@ -266,31 +226,12 @@ app.post('/quizzes/:quizId/questions', async (req, res) => {
 
     res.json({ questionId });
   } catch (error) {
-    console.error('Error adding question:', error);
-    res.status(500).send('Error adding question');
+    console.error("Error adding question:", error);
+    res.status(500).send("Error adding question");
   }
 });
 
-// Endpoint for students to access quizzes using access code
-app.get('/quizzes/:accessCode', async (req, res) => {
-  const { accessCode } = req.params;
-
-  try {
-    const quiz = await db.get('SELECT * FROM quizzes WHERE accessCode = ?', [accessCode]);
-    if (!quiz) {
-      return res.status(404).send('Quiz not found');
-    }
-
-    const questions = await db.all('SELECT * FROM questions WHERE quizId = ?', [quiz.id]);
-    return res.json({ quiz, questions });
-  } catch (error) {
-    console.error('Error retrieving quiz:', error);
-    res.status(500).send('Error retrieving quiz');
-  }
-});
-
-
-// Start the server
+//start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
