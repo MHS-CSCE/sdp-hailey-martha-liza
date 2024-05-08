@@ -9,6 +9,35 @@ const getRandomString = function () {
   return str;
 };
 
+const mapOptionsToQuestions = (questions, options) => {
+  if (questions.length !== options.length) {
+    throw new error(
+      "Number of options objects to map  does not match with number of questions!",
+    );
+  }
+
+  questions.forEach((question) => {
+    question.options = options.filter((optionObj) =>
+      optionObj.every((option) => option.questionId === question.id),
+    )[0];
+  });
+  return questions;
+};
+
+const getGroupedData = (data) => {
+  return data.reduce((acc, obj) => {
+    const key = obj.studentName;
+    if (!acc[key]) {
+      acc[key] = {};
+      acc[key].responses = [];
+      acc[key].grade = undefined;
+    }
+    acc[key].responses.push(obj);
+    return acc;
+  }, {});
+};
 module.exports = {
   getRandomString,
+  mapOptionsToQuestions,
+  getGroupedData,
 };
