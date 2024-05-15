@@ -24,7 +24,7 @@ Although the project is pretty much functional, there may be some bugs sometimes
 If you are have any questions, or need a support or clarification, you can contact each of our member of team using our emails:
   - Martha: mfern9@ocdsb.ca
   - Hailey: hwhar2@ocdsb.ca
-  - Liza: yluz1@ocdsb.ca (work email: yluizova1@gmail.com)
+  - Liza: yluiz1@ocdsb.ca (work email: yluizova1@gmail.com)
 
 ## Sources used in project
 1. DATABASE AND CONNECTIONS BETWEEN TABLES: 
