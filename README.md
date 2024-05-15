@@ -6,7 +6,7 @@ The project is developed using several programming languages and skills: Express
     - For teachers: contains sign in and login opportunites; special page to create questions and generate an unique access code, and view statistics of students.
     - For students: play button; requires entering name and an access code given by teacher; view questions and have fun! $ possible options of min and max ranges are provided. The task is to try to choose a correct option.
 
-### Downloading packages and running the program
+## Downloading packages and running the program
 Before running the program, you need to make sure that you have node js installed on your computer. Here are few steps to follow:
   1. Go to https://nodejs.org/en/download . You can download node js from this website.
   2. Then initialize node.js set up on your computer by clicking "next". It wil ask for your agreement, a custom location, the feature you'd like to install and automatically install modules(agree).
@@ -17,16 +17,16 @@ Before running the program, you need to make sure that you have node js installe
   7. In addition, if you'd like to view the functionality of database, you'll have to install SQLite extension(by alexcvzz), and SQLite Viewer(by Florian Klampfer). You could also install SQLTolls SQLite(by Matheus Teixeirs).
 As you decide to download the code and package-lock.json from our code space, make sure you have all necessary folders that should be present(for example, uploads for images). And if you see that you do not have "myDatabase.db" file, you have to run "createDB.js"(in db folder) file first to initialize database. 
 
-#### Possible bugs and issues
+## Possible bugs and issues
 Although the project is pretty much functional, there may be some bugs sometimes with statistics and creating questions. When you create too many questions, the data will be processing into database for a long time, and there is a chance that some features(ids) for db tables can mix up. It may cause issues with how questions will be displayed to students, as well as to their statistics. There may be an issue with handling images while creating questions: for almost every time, it will be desirable to upload an image for every question. Otherwise, the website may crash due to overload. 
 
-##### Support and Contact information
+## Support and Contact information
 If you are have any questions, or need a support or clarification, you can contact each of our member of team using our emails:
   - Martha: mfern9@ocdsb.ca
   - Hailey: hwhar2@ocdsb.ca
   - Liza: yluz1@ocdsb.ca (work email: yluizova1@gmail.com)
 
-###### Sources used in project
+## Sources used in project
 1. DATABASE AND CONNECTIONS BETWEEN TABLES: 
     [2] Pixelcaveman, “Displaying mysql data to HTML using EJS,” Hashnode, https://hashnode.com/post/displaying-mysql-data-to-html-using-ejs-ckycmp85q019po7s10b0zc7yf (accessed May 14, 2024). - gathered information about how to display data from database on html web pages
     [3] “SQL Joins,” SQL joins, https://www.w3schools.com/sql/sql_join.asp (accessed May 14, 2024).
